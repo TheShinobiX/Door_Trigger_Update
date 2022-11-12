@@ -28,7 +28,12 @@ import webbrowser
 # Target URL when door is opened
 # https://updatefaker.com/windows11/index.html
 
-temp_directory = "C:/Users/dubas/Desktop/door_update/temp_data"
+# temp data directory relative path
+temp_dir_rel = "temp_data"
+# current working directory full path
+cur_dir = os.getcwd()
+# Build temp directory full path for Google Chrome crap
+temp_directory = "{}/{}".format(cur_dir, temp_dir_rel)
 # Delete temp directory path, then recreate it
 shutil.rmtree(temp_directory)
 os.mkdir(temp_directory)
@@ -57,4 +62,4 @@ cmd = "start chrome --user-data-dir={} --new-window --incognito --kiosk {}".form
 os.system(cmd)
 
 # The Arduino we need to communicate with
-arduino = serial.Serial(port='COM3', baudrate=115200, timeout=.1)
+# arduino = serial.Serial(port='COM3', baudrate=115200, timeout=.1)
